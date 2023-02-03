@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen flex justify-center items-center mt-10 sm:mt-0">
+  <div class="w-full flex justify-center items-center mt-10">
     <div class="w-4/5 flex flex-col items-center gap-8">
       <div class="flex flex-col gap-2 w-full sm:flex-row">
         <label>http://localhost:1234/v1/ </label>
@@ -88,7 +88,7 @@
         </div>
       </div>
       <!--Big table-->
-      <div id="table" class="overflow-y-scroll w-full h-[32rem]">
+      <div id="table" class="overflow-y-scroll w-full max-h-[32rem]">
         <div class="bg-white p-2 shadow-inner">
           <div
             v-for="(item, id) in responseData"
