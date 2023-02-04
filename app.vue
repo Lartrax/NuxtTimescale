@@ -160,7 +160,8 @@
       <p v-if="status == 'Failed'" class="text-red-400">{{ status }}</p>
       <button
         @click="buttonGetData()"
-        class="border border-black rounded-md p-4 px-12 min-w-min w-2/4 sm:w-1/4 hover:rounded-xl hover:scale-105 hover:bg-orange-100 active:bg-orange-200 duration-100 ease-in-out"
+        class="border rounded-md p-4 px-12 min-w-min w-2/4 sm:w-1/4 duration-100 ease-in-out"
+        :class="buttonStyle"
       >
         {{ buttonTitle }}
       </button>
@@ -182,7 +183,8 @@ export default {
       selected: "get",
       timer: 0,
       buttonTitle: "Query",
-      disabled: false,
+      buttonStyle:
+        "border-black hover:rounded-xl hover:scale-105 hover:bg-orange-100 active:bg-orange-200",
     };
   },
   computed: {},
@@ -198,21 +200,16 @@ export default {
     },
     async buttonGetData() {
       if (this.timer < Date.now()) {
-        this.timer = Date.now() + 1000;
+        this.timer = Date.now() + 1500;
         this.getData();
+        this.buttonStyle = "bg-gray-100 border-red-500 cursor-not-allowed";
         for (let i = 0; i < 100; i++) {
           this.buttonTitle = (100 - i) / 100;
           await this.sleep(10);
         }
         this.buttonTitle = "Query";
-      } else {
-        this.buttonTitle = "Query";
-        this.timer = 0;
-        this.command = "";
-        this.dataToSend = "";
-        this.dataToSend2 = "";
-        this.selected = "get";
-        this.getData();
+        this.buttonStyle =
+          "border-black hover:rounded-xl hover:scale-105 hover:bg-orange-100 active:bg-orange-200";
       }
     },
     getData() {
@@ -224,13 +221,11 @@ export default {
           body: `{"first_name": "${this.dataToSend}"}`,
         })
           .then((response) => response.json())
-          .then((data) => {
-            this.responseData = data;
+          .then(() => {
             this.status = "Success";
           })
           .catch((error) => {
             console.error("Error:", error);
-            this.responseData = {};
             this.status = "Failed";
           });
       } else if (this.selected == "update") {
@@ -239,13 +234,11 @@ export default {
           body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
         })
           .then((response) => response.json())
-          .then((data) => {
-            this.responseData = data;
+          .then(() => {
             this.status = "Success";
           })
           .catch((error) => {
             console.error("Error:", error);
-            this.responseData = {};
             this.status = "Failed";
           });
       } else if (this.selected == "join") {
@@ -257,7 +250,6 @@ export default {
           })
           .catch((error) => {
             console.error("Error:", error);
-            this.responseData = {};
             this.status = "Failed";
           });
       } else if (this.selected == "get") {
@@ -273,7 +265,6 @@ export default {
             })
             .catch((error) => {
               console.error("Error:", error);
-              this.responseData = {};
               this.status = "Failed";
             });
         } else {
@@ -285,7 +276,6 @@ export default {
             })
             .catch((error) => {
               console.error("Error:", error);
-              this.responseData = {};
               this.status = "Failed";
             });
         }
@@ -300,13 +290,11 @@ export default {
             body: `{"value": "${this.dataToSend}"}`,
           })
             .then((response) => response.json())
-            .then((data) => {
-              this.responseData = data;
+            .then(() => {
               this.status = "Success";
             })
             .catch((error) => {
               console.error("Error:", error);
-              this.responseData = {};
               this.status = "Failed";
             });
         }
