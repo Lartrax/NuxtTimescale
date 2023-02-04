@@ -7,8 +7,8 @@
           v-model="selected"
           class="border-black border hover:bg-orange-50"
         >
-          <option>add</option>
           <option>get</option>
+          <option>add</option>
           <option>join</option>
           <option>update</option>
           <option>delete</option>
