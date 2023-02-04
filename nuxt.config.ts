@@ -20,5 +20,10 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@kevinmarrec/nuxt-pwa"],
+  pwa: {
+    workbox: {
+      enabled: true,
+    },
+  },
 });
