@@ -1,0 +1,33 @@
+{
+    "short_name": "PostgreApi",
+    "name": "PostgreApi",
+    "icons": [
+        {
+            "src": "/images/favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/favicon-small.svg",
+            "type": "image/svg+xml",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/favicon.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/images/favicon-small.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "minimal-ui",
+    "background_color": "#FFFFFF",
+    "theme_color": "#FFFFFF",
+    "prefer_related_applications": false
+}
