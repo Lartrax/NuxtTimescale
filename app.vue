@@ -88,7 +88,7 @@
         </div>
       </div>
       <!--Big table-->
-      <div id="table" class="overflow-y-scroll w-full max-h-[32rem]">
+      <div id="table" class="overflow-y-scroll w-full max-h-[50vh]">
         <div class="bg-white p-2 shadow-inner">
           <div
             v-for="(item, id) in responseData"
@@ -160,9 +160,9 @@
       <p v-if="status == 'Failed'" class="text-red-400">{{ status }}</p>
       <button
         @click="buttonGetData()"
-        class="border border-black rounded-md p-4 px-12 hover:rounded-xl hover:scale-105 hover:bg-orange-100 active:bg-orange-200 duration-100 ease-in-out"
+        class="border border-black rounded-md p-4 px-12 min-w-min w-2/4 sm:w-1/4 hover:rounded-xl hover:scale-105 hover:bg-orange-100 active:bg-orange-200 duration-100 ease-in-out"
       >
-        {{ this.buttonTitle }}
+        {{ buttonTitle }}
       </button>
     </div>
   </div>
@@ -182,6 +182,7 @@ export default {
       selected: "get",
       timer: 0,
       buttonTitle: "Query",
+      disabled: false,
     };
   },
   computed: {},
@@ -199,12 +200,9 @@ export default {
       if (this.timer < Date.now()) {
         this.timer = Date.now() + 1000;
         this.getData();
-        this.buttonTitle = "Quick get";
-        for (let i = 0; i < 10; i++) {
-          if (this.buttonTitle != "Query") {
-            this.buttonTitle = (10 - i) / 10;
-            await this.sleep(100);
-          }
+        for (let i = 0; i < 100; i++) {
+          this.buttonTitle = (100 - i) / 100;
+          await this.sleep(10);
         }
         this.buttonTitle = "Query";
       } else {
