@@ -2,7 +2,7 @@
   <div class="w-full flex justify-center items-center mt-10">
     <div class="w-4/5 flex flex-col items-center gap-8">
       <div class="flex flex-col gap-2 w-full sm:flex-row">
-        <label>http://localhost:1234/v1/ </label>
+        <label>https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/ </label>
         <select
           v-model="selected"
           class="border-black border hover:bg-orange-50"
@@ -216,7 +216,7 @@ export default {
       this.showEmpty = false;
       this.showOnlyIdName = false;
       if (this.selected == "add") {
-        fetch(`http://localhost:1234/v1/add/employees`, {
+        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/add/employees`, {
           method: "POST",
           body: `{"first_name": "${this.dataToSend}"}`,
         })
@@ -229,7 +229,7 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "update") {
-        fetch(`http://localhost:1234/v1/update/employees/${this.command}`, {
+        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/update/employees/${this.command}`, {
           method: "POST",
           body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
         })
@@ -242,7 +242,7 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "join") {
-        fetch(`http://localhost:1234/v1/join/employees`)
+        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/join/employees`)
           .then((response) => response.json())
           .then((data) => {
             this.responseData = data;
@@ -254,7 +254,7 @@ export default {
           });
       } else if (this.selected == "get") {
         if (this.command) {
-          fetch(`http://localhost:1234/v1/get/employees/${this.command}`, {
+          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees/${this.command}`, {
             method: "POST",
             body: `{"value": "${this.dataToSend}"}`,
           })
@@ -268,7 +268,7 @@ export default {
               this.status = "Failed";
             });
         } else {
-          fetch(`http://localhost:1234/v1/get/employees`)
+          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees`)
             .then((response) => response.json())
             .then((data) => {
               this.responseData = data;
@@ -285,7 +285,7 @@ export default {
             `You are about to delete all employees with value ${this.dataToSend} in column ${this.command}.`
           ) == true
         ) {
-          fetch(`http://localhost:1234/v1/delete/employees/${this.command}`, {
+          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app//v1/delete/employees/${this.command}`, {
             method: "POST",
             body: `{"value": "${this.dataToSend}"}`,
           })
