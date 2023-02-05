@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-screen flex justify-center items-center bg-white dark:invert"
+    class="w-full h-screen flex justify-center items-center pt-40 bg-white dark:invert"
   >
     <div class="w-4/5 flex flex-col items-center gap-8">
       <div class="flex flex-col gap-2 w-full sm:flex-row">
