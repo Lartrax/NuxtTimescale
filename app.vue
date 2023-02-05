@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full flex justify-center items-center mt-10">
+  <div
+    class="w-full h-screen flex justify-center items-center bg-white dark:invert"
+  >
     <div class="w-4/5 flex flex-col items-center gap-8">
       <div class="flex flex-col gap-2 w-full sm:flex-row">
         <label>https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/ </label>
@@ -156,8 +158,12 @@
           </div>
         </div>
       </div>
-      <p v-if="status == 'Success'" class="text-green-400">{{ status }}</p>
-      <p v-if="status == 'Failed'" class="text-red-400">{{ status }}</p>
+      <p v-if="status == 'Success'" class="text-green-400 dark:invert">
+        {{ status }}
+      </p>
+      <p v-if="status == 'Failed'" class="text-red-400 dark:invert">
+        {{ status }}
+      </p>
       <button
         @click="buttonGetData()"
         class="border rounded-md p-4 px-12 min-w-min w-2/4 sm:w-1/4 duration-100 ease-in-out"
@@ -216,10 +222,13 @@ export default {
       this.showEmpty = false;
       this.showOnlyIdName = false;
       if (this.selected == "add") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/add/employees`, {
-          method: "POST",
-          body: `{"first_name": "${this.dataToSend}"}`,
-        })
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/add/employees`,
+          {
+            method: "POST",
+            body: `{"first_name": "${this.dataToSend}"}`,
+          }
+        )
           .then((response) => response.json())
           .then(() => {
             this.status = "Success";
@@ -229,10 +238,13 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "update") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/update/employees/${this.command}`, {
-          method: "POST",
-          body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
-        })
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/update/employees/${this.command}`,
+          {
+            method: "POST",
+            body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
+          }
+        )
           .then((response) => response.json())
           .then(() => {
             this.status = "Success";
@@ -242,7 +254,9 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "join") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/join/employees`)
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/join/employees`
+        )
           .then((response) => response.json())
           .then((data) => {
             this.responseData = data;
@@ -254,10 +268,13 @@ export default {
           });
       } else if (this.selected == "get") {
         if (this.command) {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees/${this.command}`, {
-            method: "POST",
-            body: `{"value": "${this.dataToSend}"}`,
-          })
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees/${this.command}`,
+            {
+              method: "POST",
+              body: `{"value": "${this.dataToSend}"}`,
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               this.responseData = data;
@@ -268,7 +285,9 @@ export default {
               this.status = "Failed";
             });
         } else {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees`)
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees`
+          )
             .then((response) => response.json())
             .then((data) => {
               this.responseData = data;
@@ -285,10 +304,13 @@ export default {
             `You are about to delete all employees with value ${this.dataToSend} in column ${this.command}.`
           ) == true
         ) {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app//v1/delete/employees/${this.command}`, {
-            method: "POST",
-            body: `{"value": "${this.dataToSend}"}`,
-          })
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app//v1/delete/employees/${this.command}`,
+            {
+              method: "POST",
+              body: `{"value": "${this.dataToSend}"}`,
+            }
+          )
             .then((response) => response.json())
             .then(() => {
               this.status = "Success";
