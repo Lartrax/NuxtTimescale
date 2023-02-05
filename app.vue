@@ -216,10 +216,13 @@ export default {
       this.showEmpty = false;
       this.showOnlyIdName = false;
       if (this.selected == "add") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/add/employees`, {
-          method: "POST",
-          body: `{"first_name": "${this.dataToSend}"}`,
-        })
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/add/employees`,
+          {
+            method: "POST",
+            body: `{"first_name": "${this.dataToSend}"}`,
+          }
+        )
           .then((response) => response.json())
           .then(() => {
             this.status = "Success";
@@ -229,10 +232,13 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "update") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/update/employees/${this.command}`, {
-          method: "POST",
-          body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
-        })
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/update/employees/${this.command}`,
+          {
+            method: "POST",
+            body: `{"id": "${this.dataToSend}", "value": "${this.dataToSend2}"}`,
+          }
+        )
           .then((response) => response.json())
           .then(() => {
             this.status = "Success";
@@ -242,7 +248,9 @@ export default {
             this.status = "Failed";
           });
       } else if (this.selected == "join") {
-        fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/join/employees`)
+        fetch(
+          `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/join/employees`
+        )
           .then((response) => response.json())
           .then((data) => {
             this.responseData = data;
@@ -254,10 +262,13 @@ export default {
           });
       } else if (this.selected == "get") {
         if (this.command) {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees/${this.command}`, {
-            method: "POST",
-            body: `{"value": "${this.dataToSend}"}`,
-          })
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees/${this.command}`,
+            {
+              method: "POST",
+              body: `{"value": "${this.dataToSend}"}`,
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               this.responseData = data;
@@ -268,7 +279,9 @@ export default {
               this.status = "Failed";
             });
         } else {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees`)
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/get/employees`
+          )
             .then((response) => response.json())
             .then((data) => {
               this.responseData = data;
@@ -285,10 +298,13 @@ export default {
             `You are about to delete all employees with value ${this.dataToSend} in column ${this.command}.`
           ) == true
         ) {
-          fetch(`https://go-api-postgres-7xqyrnpuaq-ew.a.run.app//v1/delete/employees/${this.command}`, {
-            method: "POST",
-            body: `{"value": "${this.dataToSend}"}`,
-          })
+          fetch(
+            `https://go-api-postgres-7xqyrnpuaq-ew.a.run.app//v1/delete/employees/${this.command}`,
+            {
+              method: "POST",
+              body: `{"value": "${this.dataToSend}"}`,
+            }
+          )
             .then((response) => response.json())
             .then(() => {
               this.status = "Success";
