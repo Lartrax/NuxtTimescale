@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full flex justify-center items-center mt-10">
+  <div
+    class="w-full h-screen flex justify-center items-center pt-40 bg-white dark:invert"
+  >
     <div class="w-4/5 flex flex-col items-center gap-8">
       <div class="flex flex-col gap-2 w-full sm:flex-row">
         <label>https://go-api-postgres-7xqyrnpuaq-ew.a.run.app/v1/ </label>
@@ -156,8 +158,12 @@
           </div>
         </div>
       </div>
-      <p v-if="status == 'Success'" class="text-green-400">{{ status }}</p>
-      <p v-if="status == 'Failed'" class="text-red-400">{{ status }}</p>
+      <p v-if="status == 'Success'" class="text-green-400 dark:invert">
+        {{ status }}
+      </p>
+      <p v-if="status == 'Failed'" class="text-red-400 dark:invert">
+        {{ status }}
+      </p>
       <button
         @click="buttonGetData()"
         class="border rounded-md p-4 px-12 min-w-min w-2/4 sm:w-1/4 duration-100 ease-in-out"
