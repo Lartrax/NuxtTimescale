@@ -9,6 +9,7 @@
         <select
           v-model="selected"
           class="border-black border hover:bg-orange-100"
+          aria-label="select primary request type"
         >
           <option aria-label="get">get</option>
           <option aria-label="add">add</option>
@@ -21,6 +22,7 @@
         <select
           v-model="command"
           class="border-black border hover:bg-orange-100"
+          aria-label="select secondary request type"
         >
           <option aria-label="empty"></option>
           <option aria-label="first_name">first_name</option>
