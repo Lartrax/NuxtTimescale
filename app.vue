@@ -10,11 +10,11 @@
           v-model="selected"
           class="border-black border hover:bg-orange-100"
         >
-          <option>get</option>
-          <option>add</option>
-          <option>join</option>
-          <option>update</option>
-          <option>delete</option>
+          <option aria-label="get">get</option>
+          <option aria-label="add">add</option>
+          <option aria-label="join">join</option>
+          <option aria-label="update">update</option>
+          <option aria-label="delete">delete</option>
         </select>
         <label> /employees/ </label>
         <!--Selection for column-->
@@ -22,18 +22,18 @@
           v-model="command"
           class="border-black border hover:bg-orange-100"
         >
-          <option></option>
-          <option>first_name</option>
-          <option>id</option>
-          <option>last_name</option>
-          <option>phone</option>
-          <option>email</option>
-          <option>birthdate</option>
-          <option>startdate</option>
-          <option>enddate</option>
-          <option>salary</option>
-          <option>boss_id</option>
-          <option>department_id</option>
+          <option aria-label="empty"></option>
+          <option aria-label="first_name">first_name</option>
+          <option aria-label="id">id</option>
+          <option aria-label="last_name">last_name</option>
+          <option aria-label="phone">phone</option>
+          <option aria-label="email">email</option>
+          <option aria-label="birthdate">birthdate</option>
+          <option aria-label="startdate">startdate</option>
+          <option aria-label="enddate">enddate</option>
+          <option aria-label="salary">salary</option>
+          <option aria-label="boss_id">boss_id</option>
+          <option aria-label="department_id">department_id</option>
         </select>
       </div>
       <!--If update is selected, two data inputs will be displayed-->
